@@ -1,11 +1,14 @@
 <template>
-  <div></div>
+  <div>
+    <p>{{ videoContent }}</p>
+  </div>
 </template>
 
 <script>
 
 export default {
   name: "VideoContent",
+  props: ['videoContent']
 }
 
 </script>

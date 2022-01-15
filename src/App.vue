@@ -1,14 +1,14 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <h1 v-for="video in videos" :key="video.title">>{{video.title}}</h1>
+    <video-content v-for="video in videos" :key="video.title" :video-content="video">>{{ video.title }}></video-content>
     <div>{{ count }}</div>
   </div>
 </template>
 
 <script>
-//import VideoContent from './components/Video.vue'
 import {mapState, mapActions} from "vuex";
+import VideoContent from "./components/Video";
 
 export default {
   name: 'App',
@@ -18,6 +18,7 @@ export default {
     ]),
   },
   components: {
+    VideoContent
     //VideoContent
   },
   methods: {
