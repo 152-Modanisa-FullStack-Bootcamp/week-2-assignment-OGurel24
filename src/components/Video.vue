@@ -1,8 +1,10 @@
 <template>
   <div id="wrapper">
     <br>
-    <button type="submit" @click="toggleFavorites(videoContent.id)">Add Favorites</button>
-    <div class="video-box">{{ videoContent }}</div>
+    <button type="submit" @click="favButton">
+      Add Favorites
+    </button>
+    <div :class="{fav:isFav}">{{ videoContent }}</div>
     <br>
   </div>
 </template>
@@ -14,19 +16,30 @@ export default {
 
   name: "VideoContent",
   props: ['videoContent'],
-  methods:{...mapMutations([
+  data() {
+    return {
+      isFav: false
+    }
+  },
+  methods: {
+    ...mapMutations([
       'toggleFavorites'
-    ])
+    ]),
+    favButton() {
+      this.isFav = !this.isFav;
+      this.toggleFavorites(this.videoContent.id)
+    }
   }
 }
 
 </script>
 
 <style scoped>
-#wrapper{
+#wrapper {
   margin: 20px;
 }
-.video-box{
+
+.fav {
   background-color: red;
 }
 
