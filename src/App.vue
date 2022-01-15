@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
     <video-content v-for="video in videos" :key="video.title" :video-content="video">>{{ video.title }}></video-content>
-    <div>{{ count }}</div>
   </div>
 </template>
 
@@ -14,12 +12,11 @@ export default {
   name: 'App',
   computed: {
     ...mapState([
-      'count', "videos"
+      "videos"
     ]),
   },
   components: {
     VideoContent
-    //VideoContent
   },
   methods: {
     ...mapActions(['getVideos'])
