@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import Vuex from 'vuex'
-import axios from 'axios'
+import axios from "axios";
 
 Vue.use(Vuex)
 Vue.config.productionTip = false
@@ -9,16 +9,18 @@ Vue.config.productionTip = false
 const store = new Vuex.Store({
     state: {
         count: 5,
-        videos: axios.get('https://my-json-server.typicode.com/modanisa/bootcamp-video-db/videos')
-            .then(function (response){
-                console.log(response.data);
-                return response.data
-            }
-        )
+        videos: []
     },
     mutations: {
-        increment(state) {
-            state.count++
+        setVideos(state,videos) {
+            state.videos=videos;
+        },
+    },
+    actions:{
+        async getVideos(context){
+            const response=await axios
+                .get('https://my-json-server.typicode.com/modanisa/bootcamp-video-db/videos')
+            context.commit('setVideos',response.data)
         }
     }
 })

@@ -1,17 +1,31 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <onur></onur>
+    <h1 v-for="video in videos" :key="video.title">>{{video.title}}</h1>
+    <div>{{ count }}</div>
   </div>
 </template>
 
 <script>
-import onur from './components/onur.vue'
+//import VideoContent from './components/Video.vue'
+import {mapState, mapActions} from "vuex";
 
 export default {
   name: 'App',
+  computed: {
+    ...mapState([
+      'count', "videos"
+    ]),
+  },
   components: {
-    onur
+    //VideoContent
+  },
+  methods: {
+    ...mapActions(['getVideos'])
+  },
+
+  created() {
+    this.getVideos();
   }
 }
 </script>
