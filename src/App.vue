@@ -1,12 +1,11 @@
 <template>
   <div id="app">
-    <video-content v-for="video in videos" :key="video.title" :video-content="video">>{{ video.title }}></video-content>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import {mapState, mapActions} from "vuex";
-import VideoContent from "./components/Video";
 
 export default {
   name: 'App',
@@ -15,9 +14,7 @@ export default {
       "videos"
     ]),
   },
-  components: {
-    VideoContent
-  },
+
   methods: {
     ...mapActions(['getVideos'])
   },

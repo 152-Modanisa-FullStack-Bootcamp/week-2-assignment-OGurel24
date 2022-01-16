@@ -1,9 +1,16 @@
 import Vue from 'vue'
-import App from './App.vue'
+
 import Vuex from 'vuex'
 import axios from "axios";
+import VueRouter from 'vue-router'
+
+import App from './App.vue'
+import HomePage from "./components/HomePage";
+import FavPage from "./components/FavPage";
 
 Vue.use(Vuex)
+Vue.use(VueRouter);
+
 Vue.config.productionTip = false
 
 const store = new Vuex.Store({
@@ -40,7 +47,16 @@ const store = new Vuex.Store({
     }
 })
 
+const routes = [
+    {path: '/', component: HomePage},
+    {path: '/fav', component: FavPage}
+]
+const router = new VueRouter({
+    routes // short for `routes: routes`
+})
+
 new Vue({
     store,
+    router,
     render: h => h(App),
 }).$mount('#app')

@@ -1,10 +1,10 @@
 <template>
   <div id="wrapper">
     <br>
+    <div :class="{fav:isFav}">{{ videoContent }}</div>
     <button type="submit" @click="favButton">
       Add Favorites
     </button>
-    <div :class="{fav:isFav}">{{ videoContent }}</div>
     <br>
   </div>
 </template>
