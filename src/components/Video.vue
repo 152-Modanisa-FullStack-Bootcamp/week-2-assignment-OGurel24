@@ -1,11 +1,13 @@
 <template>
-  <div id="wrapper">
-    <br>
-    <div :class="{fav:isFav}">{{ videoContent }}</div>
-    <button type="submit" @click="favButton">
-      Add Favorites
-    </button>
-    <br>
+  <div class="video-wrapper">
+    <img class="image-cover" @mouseover="hoverImageSet()" @mouseout="resetImage" :src="imgUrl" alt="">
+    <img class="owner-image" :src="videoContent['ownerImage']" alt="">
+    <p class="video-title">{{ videoContent.title }}</p>
+    <p class="owner-name">{{ videoContent['ownerName'] }}</p>
+    <p class="view-count">{{ videoContent['viewCount'] }}</p>
+    <p class="published">{{ videoContent['publishDateInMonth'] }}</p>
+    <button type="submit" @click="favButton">Add Favorites</button>
+    <br><br>
   </div>
 </template>
 
@@ -18,7 +20,8 @@ export default {
   props: ['videoContent'],
   data() {
     return {
-      isFav: false
+      isFav: false,
+      imgUrl: this.videoContent['coverImage']
     }
   },
   methods: {
@@ -28,6 +31,14 @@ export default {
     favButton() {
       this.isFav = !this.isFav;
       this.toggleFavorites(this.videoContent.id)
+    },
+    hoverImageSet() {
+      //console.log("hover");
+      this.imgUrl = this.videoContent['hoverImage'];
+    },
+    resetImage() {
+      //console.log("out");
+      this.imgUrl = this.videoContent['coverImage']
     }
   }
 }
@@ -41,6 +52,16 @@ export default {
 
 .fav {
   background-color: red;
+}
+
+.image-cover {
+  width: 360px;
+  height: 200px;
+}
+
+.owner-image {
+  width: 36px;
+  height: 36px;
 }
 
 </style>

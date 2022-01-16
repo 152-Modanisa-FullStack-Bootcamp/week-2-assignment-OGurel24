@@ -41,8 +41,9 @@ const store = new Vuex.Store({
     actions: {
         async getVideos(context) {
             const response = await axios
-                .get('https://my-json-server.typicode.com/modanisa/bootcamp-video-db/videos')
-            context.commit('setVideos', response.data)
+                .get('https://my-json-server.typicode.com/modanisa/bootcamp-video-db/videos');
+            console.log(response.data);
+            context.commit('setVideos', response.data);
         }
     }
 })

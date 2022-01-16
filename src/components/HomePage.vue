@@ -1,6 +1,6 @@
 <template>
   <div id="homepage">
-    <router-link to="/fav">Favorites</router-link>
+    <router-link to="/fav" id="favorites-router">Favorites</router-link>
     <video-content v-for="video in videos" :key="video.title" :video-content="video">>{{ video.title }}></video-content>
   </div>
 </template>
@@ -28,5 +28,9 @@ export default {
 
 
 <style scoped>
-
+#favorites-router {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+}
 </style>

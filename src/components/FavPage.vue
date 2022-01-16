@@ -1,6 +1,10 @@
 <template>
   <div id="favpage">
-    <video-content v-for="video in favVideos" :key="video.title" :video-content="video">>{{ video.title }}></video-content>
+    <router-link to="/">HomePage</router-link>
+    <div class="video-wrapper">
+      <video-content v-for="video in favVideos" :key="video.title" :video-content="video">>{{ video.title }}></video-content>
+    </div>
+
   </div>
 </template>
 
@@ -26,5 +30,8 @@ export default {
 </script>
 
 <style scoped>
+.video-wrapper{
+  display: flex;
+}
 
 </style>
